@@ -26,4 +26,20 @@ int main() {
     }
     
 }
+#include <iostream>
+#include<cstring>
+using namespace std;
+int main() {
+    char s[100]="Today ,is rainy day";
+    
+    char *ptr=strtok(s,",");
+    cout<<ptr<<endl;
+    //will run the loop till ptr has soem value
+   while (ptr!=NULL){ 
+        ptr=strtok(NULL,",");
+        cout<<ptr<<endl;
+   }
+
+    return 0;
+}
 
