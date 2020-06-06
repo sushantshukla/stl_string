@@ -42,4 +42,55 @@ int main() {
 
     return 0;
 }
+//strtokenizer manually implementation
+char *mystrtok(char *str, char delim){
+    //accept a strig and asingle delimmiter
+    static char *input=NULL;
+    //input will point to "THis "than next word...
+    if(str!=NULL){
+        //we are maintaing the first call
+        input =str;
+    }
+    //check here base case-after final token has been accepted
+    if(input==NULL){
+        return NULL;
+
+    }
+    //start extracting tokens and store them in array
+    //memory exist even after function call is over
+    char *output=new char [strlen(input)+1];
+    int i=0;
+    for(; input[i]!='\0';i++){
+        if (input[i]!=delim){
+            output[i]=input[i];
+
+        }
+        else{
+            output[i]='\0';
+            input=input +i+1;
+            return output;
+        }
+    }
+    //corner case
+    output[i]='\0';
+    input=NULL;
+    return output;
+
+
+}
+
+int main() {
+     char s[100]="Today ,is rainy day";
+    
+    char *ptr=mystrtok(s,',');
+    cout<<ptr<<endl;
+    //will run the loop till ptr has soem value
+   while (ptr!=NULL){ 
+        ptr=mystrtok(NULL,',');
+        cout<<ptr<<endl;
+   }
+   return 0;
+    
+}
+
 
